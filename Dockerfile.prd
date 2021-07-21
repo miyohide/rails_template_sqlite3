@@ -14,6 +14,11 @@ RUN ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
   && ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npm \
   && ln -s /usr/local/lib/node_modules/npm/bin/npm-cli.js /usr/local/bin/npx
 
+# setup SSH deamon for Azure Web Apps
+# see. https://docs.microsoft.com/ja-jp/azure/app-service/configure-custom-container?pivots=container-linux#enable-ssh
+RUN apt-get update && apt-get install -y openssh-server
+RUN echo "root:Docker!" | chpasswd
+
 WORKDIR /app
 
 COPY Gemfile /app/Gemfile
@@ -29,6 +34,7 @@ RUN RAILS_ENV=production bin/rails assets:precompile
 COPY entrypoint.sh /usr/bin/
 RUN chmod +x /usr/bin/entrypoint.sh
 ENTRYPOINT ["entrypoint.sh"]
-EXPOSE 3000
+# Open port 2222 for SSH access
+EXPOSE 3000 2222
 
 CMD [ "rails", "server", "-b", "0.0.0.0" ]
