@@ -37,4 +37,4 @@ ENTRYPOINT ["entrypoint.sh"]
 # Open port 2222 for SSH access
 EXPOSE 3000 2222
 
-CMD [ "rails", "server", "-b", "0.0.0.0" ]
+CMD [ "rails", "server", "-b", "0.0.0.0", "-e", "production" ]
