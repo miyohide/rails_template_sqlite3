@@ -1,0 +1,28 @@
+name: Create Docker Image
+
+on:
+  push:
+    tags:
+      - v*
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    # - uses: azure/docker-login@v1
+    #   with:
+    #     login-server: miyohidecontainer.azurecr.io
+    #     username: ${{ secrets.REGISTRY_USERNAME }}
+    #     password: ${{ secrets.REGISTRY_PASSWORD }}
+    - name: create Docker Image
+      run: |
+        IMAGE_TAG=$(echo ${{ github.ref }} | sed -e 's/refs\/tags\///')
+        docker build -f Dockerfile.prd -t miyohidecontainer.azurecr.io/rails_template_sqlite3:$IMAGE_TAG .
+    #     docker push miyohidecontainer.azurecr.io/rails_template_sqlite3:$IMAGE_TAG
+    # - uses: azure/webapps-deploy@v2
+    #   with:
+    #     app-name: 'miyohiderailsapp'
+    #     publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+    #     images: miyohidecontainer.azurecr.io/rails_template_sqlite3:$IMAGE_TAG
