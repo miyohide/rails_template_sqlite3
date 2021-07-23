@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
 
+# SSHサーバーをポート2222で立ち上げる
+service ssh start
+
 # Remove a potentially pre-existing server.pid for Rails.
 rm -f /myapp/tmp/pids/server.pid
 
