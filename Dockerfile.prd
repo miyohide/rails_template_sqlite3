@@ -1,5 +1,5 @@
 FROM node:14.17.0-slim as node
-FROM ruby:3.0.2
+FROM ruby:3.0.2-slim
 
 # NodeとYarnのインストール
 ENV YARN_VERSION 1.22.5
@@ -16,7 +16,7 @@ RUN ln -s /opt/yarn/bin/yarn /usr/local/bin/yarn \
 
 # setup SSH deamon for Azure Web Apps
 # see. https://docs.microsoft.com/ja-jp/azure/app-service/configure-custom-container?pivots=container-linux#enable-ssh
-RUN apt-get update && apt-get install -y openssh-server
+RUN apt-get update && apt-get install -y openssh-server build-essential libsqlite3-dev
 RUN echo "root:Docker!" | chpasswd
 
 COPY sshd_config /etc/ssh/
