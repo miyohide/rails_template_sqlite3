@@ -27,3 +27,17 @@ resource "azurerm_container_registry" "acr" {
   sku                      = "Basic"
   admin_enabled            = true
 }
+
+# Create App Service plan
+resource "azurerm_app_service_plan" "appplan" {
+  name = "asp-miyohiderails"
+  location = azurerm_resource_group.rg.location
+  resource_group_name = azurerm_resource_group.rg.name
+  kind = "Linux"
+  reserved = true
+
+  sku {
+    tier = "Basic"
+    size = "B1"
+  }
+}
