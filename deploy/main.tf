@@ -53,6 +53,8 @@ resource "azurerm_app_service" "appservice" {
   }
 
   app_settings = {
-    "DOCKER_REGISTRY_SERVER_URL" = "https://index.docker.io/v1"
+    "DOCKER_REGISTRY_SERVER_URL" = "https://${azurerm_container_registry.acr.login_server}"
+    "DOCKER_REGISTRY_SERVER_USERNAME" = azurerm_container_registry.acr.admin_username
+    "DOCKER_REGISTRY_SERVER_PASSWORD" = azurerm_container_registry.acr.admin_password
   }
 }
