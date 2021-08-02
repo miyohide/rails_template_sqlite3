@@ -57,5 +57,7 @@ resource "azurerm_app_service" "appservice" {
     "DOCKER_REGISTRY_SERVER_USERNAME" = azurerm_container_registry.acr.admin_username
     "DOCKER_REGISTRY_SERVER_PASSWORD" = azurerm_container_registry.acr.admin_password
     "WEBSITES_PORT" = 3000
+    "RALS_LOG_TO_STDOUT" = 1
+    "RAILS_SERVE_STATIC_FILES" = 1
   }
 }
