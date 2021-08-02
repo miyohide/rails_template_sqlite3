@@ -59,5 +59,6 @@ resource "azurerm_app_service" "appservice" {
     "WEBSITES_PORT" = 3000
     "RALS_LOG_TO_STDOUT" = 1
     "RAILS_SERVE_STATIC_FILES" = 1
+    "RAILS_MASTER_KEY" = var.rails_master_key
   }
 }
