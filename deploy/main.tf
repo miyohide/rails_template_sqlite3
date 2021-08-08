@@ -49,7 +49,7 @@ resource "azurerm_app_service" "appservice" {
   app_service_plan_id = azurerm_app_service_plan.appplan.id
 
   site_config {
-    linux_fx_version = "DOCKER|${azurerm_container_registry.acr.login_server}/rails_template_sqlite3:latest:latest"
+    linux_fx_version = "DOCKER|${azurerm_container_registry.acr.login_server}/rails_template_sqlite3:latest"
   }
 
   app_settings = {
