@@ -21,3 +21,17 @@ $ docker-compose run --rm --service-ports web
 $ docker-compose run --rm web bash
 root@xxxxxx:/app# bundle install
 ```
+
+# Gemの更新をしたいとき
+
+```
+$ docker-compose run --rm web bash
+root@xxxxxx:/app# bundle update
+```
+
+# JavaScriptライブラリの更新をしたいとき
+
+```
+$ docker-compose run --rm web bash
+root@xxxxxx:/app# yarn upgrade
+```
