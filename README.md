@@ -1,24 +1,23 @@
-# README
+# 作業用メモ
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Railsのコマンドを実行する
 
-Things you may want to cover:
+コンテナの中に入って、そこで`bin/rails`コマンドを叩く。
 
-* Ruby version
+```
+$ docker-compose run --rm web bash
+root@xxxxxx:/app# bin/rails g scaffold runrecord starttime:timestamp distance:float runtime:integer
+```
 
-* System dependencies
+# Railsアプリの実行
 
-* Configuration
+```
+$ docker-compose run --rm --service-ports web
+```
 
-* Database creation
+# Gemの追加をしたいとき
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
+$ docker-compose run --rm web bash
+root@xxxxxx:/app# bundle install
+```
