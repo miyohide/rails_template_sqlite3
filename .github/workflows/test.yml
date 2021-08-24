@@ -20,7 +20,7 @@ jobs:
         ruby-version: 3.0.2
         bundler-cache: true
     - name: yarn install
-      run: bin/rails yarn:install --network-timeout 1000000
+      run: bin/rails yarn:install
     - name: create database
       run: bin/rails db:create
     - name: create tables
