@@ -8,29 +8,10 @@ on:
 
 env:
   RAILS_ENV: test
-  APP_DB_HOST: localhost
-  APP_DB_PORT: 5432
-  APP_DB_USERNAME: rails_app
-  APP_DB_PASSWORD: rails_app
 
 jobs:
   test:
     runs-on: ubuntu-latest
-    # add postgresql service
-    # see. https://help.github.com/ja/actions/configuring-and-managing-workflows/creating-postgresql-service-containers
-    services:
-      postgres:
-        image: postgres:13.3-alpine
-        env:
-          POSTGRES_USER: 'rails_app'
-          POSTGRES_PASSWORD: 'rails_app'
-        options: >-
-          --health-cmd pg_isready
-          --health-interval 10s
-          --health-timeout 5s
-          --health-retries 5
-        ports:
-          - 5432:5432
     steps:
     - uses: actions/checkout@v2
     - name: Set up Ruby
