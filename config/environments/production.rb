@@ -105,4 +105,6 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.hosts << ".azurewebsites.net"
   config.hosts << "localhost"  ## for test
+
+  config.log_path = "/mylogs/production.log"
 end
