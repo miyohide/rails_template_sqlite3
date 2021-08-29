@@ -106,5 +106,5 @@ Rails.application.configure do
   config.hosts << ".azurewebsites.net"
   config.hosts << "localhost"  ## for test
 
-  config.log_path = "/mylogs/production.log"
+  config.log_path = "/mylogs/logs/production.log"
 end
