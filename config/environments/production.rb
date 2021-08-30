@@ -105,5 +105,6 @@ Rails.application.configure do
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
   config.hosts << ".azurewebsites.net"
 
-  config.paths['log'] = "/mylogs/logs/production.log"
+  # Azure Web AppsにてログをマウントしたAzure Filesに出力するときに試した設定
+  # config.paths['log'] = "/mylogs/logs/production.log"
 end
