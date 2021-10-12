@@ -13,8 +13,8 @@
 ActiveRecord::Schema.define(version: 2021_07_22_074224) do
 
   create_table "todos", force: :cascade do |t|
-    t.string "title"
-    t.text "body"
+    t.string "title", limit: 100, null: false
+    t.text "body", limit: 500, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
