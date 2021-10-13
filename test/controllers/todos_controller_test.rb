@@ -23,6 +23,14 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to todo_url(Todo.last)
   end
 
+  test "不適切な値を送信したら、Todoが作られないこと" do
+    assert_no_difference('Todo.count') do
+      post todos_url, params: { todo: { body: "", title: "" } }
+    end
+    # see. https://api.rubyonrails.org/classes/ActionDispatch/Assertions/ResponseAssertions.html
+    assert_response 422
+  end
+
   test "対象データにGETアクセスできること" do
     get todo_url(@todo)
     assert_response :success
