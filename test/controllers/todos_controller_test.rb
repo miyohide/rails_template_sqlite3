@@ -46,6 +46,11 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to todo_url(@todo)
   end
 
+  test "不正な値を送信したら、Todoが更新されないこと" do
+    patch todo_url(@todo), params: { todo: { body: "", title: "" } }
+    assert_response 422
+  end
+
   test "対象データに対してDELETEアクセスしたらTodoが削除されること" do
     assert_difference('Todo.count', -1) do
       delete todo_url(@todo)
