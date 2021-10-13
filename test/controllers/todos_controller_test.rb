@@ -2,7 +2,7 @@ require "test_helper"
 
 class TodosControllerTest < ActionDispatch::IntegrationTest
   setup do
-    @todo = todos(:one)
+    @todo = todos(:valid_todo)
   end
 
   test "indexにGETでアクセスできること" do
