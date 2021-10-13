@@ -5,17 +5,17 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     @todo = todos(:one)
   end
 
-  test "should get index" do
+  test "indexにGETでアクセスできること" do
     get todos_url
     assert_response :success
   end
 
-  test "should get new" do
+  test "newにGETでアクセスできること" do
     get new_todo_url
     assert_response :success
   end
 
-  test "should create todo" do
+  test "正しい値を送信したら、Todoが作られること" do
     assert_difference('Todo.count') do
       post todos_url, params: { todo: { body: @todo.body, title: @todo.title } }
     end
@@ -23,22 +23,22 @@ class TodosControllerTest < ActionDispatch::IntegrationTest
     assert_redirected_to todo_url(Todo.last)
   end
 
-  test "should show todo" do
+  test "対象データにGETアクセスできること" do
     get todo_url(@todo)
     assert_response :success
   end
 
-  test "should get edit" do
+  test "editページにGETアクセスできること" do
     get edit_todo_url(@todo)
     assert_response :success
   end
 
-  test "should update todo" do
+  test "正しい値を送信したら、Todoが更新されること" do
     patch todo_url(@todo), params: { todo: { body: @todo.body, title: @todo.title } }
     assert_redirected_to todo_url(@todo)
   end
 
-  test "should destroy todo" do
+  test "対象データに対してDELETEアクセスしたらTodoが削除されること" do
     assert_difference('Todo.count', -1) do
       delete todo_url(@todo)
     end
