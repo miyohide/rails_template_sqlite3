@@ -1,0 +1,5 @@
+app_resource_group_name = "rg-railsapp"
+app_resource_group_location = "japaneast"
+container_registry_name = "crmiyohiderailsapp001"
+app_service_plan_name = "asp-miyohiderails"
+app_service_name = "app-miyohiderails"

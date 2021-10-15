@@ -15,13 +15,13 @@ provider "azurerm" {
 }
 
 resource "azurerm_resource_group" "rg" {
-  name     = "rg-railsapp"
-  location = "japaneast"
+  name     = var.app_resource_group_name
+  location = var.app_resource_group_location
 }
 
 # Create an Azure Container Registory
 resource "azurerm_container_registry" "acr" {
-  name                     = "crmiyohiderailsapp"
+  name                     = var.container_registry_name
   resource_group_name      = azurerm_resource_group.rg.name
   location                 = azurerm_resource_group.rg.location
   sku                      = "Basic"
@@ -30,7 +30,7 @@ resource "azurerm_container_registry" "acr" {
 
 # Create App Service plan
 resource "azurerm_app_service_plan" "appplan" {
-  name = "asp-miyohiderails"
+  name = var.app_service_plan_name
   location = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   kind = "Linux"
@@ -43,7 +43,7 @@ resource "azurerm_app_service_plan" "appplan" {
 }
 
 resource "azurerm_app_service" "appservice" {
-  name = "app-miyohiderails"
+  name = var.app_service_name
   location = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   app_service_plan_id = azurerm_app_service_plan.appplan.id
