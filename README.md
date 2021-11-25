@@ -35,3 +35,15 @@ root@xxxxxx:/app# bundle update
 $ docker-compose run --rm web bash
 root@xxxxxx:/app# yarn upgrade
 ```
+
+# Rubyのバージョンアップ
+
+以下のファイルを修正する
+
+- Gemfile
+- .ruby-version
+- Dockerfile
+- Dockerfile.prd
+- .github/workflows/test.yml
+
+その後、`docker-compose build`でイメージを作り直し、`docker-compose run --rm web bash`でアプリコンテナの中に入って`bundle update`を実行する。
