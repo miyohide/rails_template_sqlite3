@@ -2,7 +2,7 @@ version: "3.8"
 services:
   web: &web
     build: .
-    image: app:1.0.0
+    image: rails_template_sqlite3:1.0.0
     stdin_open: true
     tty: true
     volumes:
