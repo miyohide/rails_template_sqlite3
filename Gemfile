@@ -20,6 +20,8 @@ gem 'jbuilder', '~> 2.7'
 gem 'activerecord-session_store'
 # Render error pages
 gem 'rambulance'
+# CSS framework
+gem 'bootstrap', '~> 5.1.3'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
