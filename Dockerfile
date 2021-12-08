@@ -10,6 +10,7 @@ RUN apt-get update && apt-get install -y \
       git \
       nodejs \
       sqlite3 \
+      redis-server \
       vim
 
 # Add yarnpkg for assets:precompile
