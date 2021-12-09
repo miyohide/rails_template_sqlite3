@@ -46,4 +46,8 @@ Rails.application.configure do
 
   # Annotate rendered view with file names.
   # config.action_view.annotate_rendered_view_with_filenames = true
+  config.session_store :redis_store,
+    servers: ["redis://#{ENV['REDIS_HOST']}:#{ENV['REDIS_PORT']}/#{ENV['REDIS_DB']}/session"],
+    :key => '_rails_template_sqlite3_session',
+    expire_after: 10.minutes
 end
