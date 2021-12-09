@@ -21,6 +21,9 @@ services:
       HISTFILE: "/app/log/.bash_history"
       EDITOR: "vi"
       RAILS_MASTER_KEY:
+      REDIS_HOST: "redis"
+      REDIS_PORT: 6379
+      REDIS_DB: 0
     command: ["bin/rails", "server", "-b", "0.0.0.0"]
     expose: ["3000"]
     ports: ["3000:3000"]
