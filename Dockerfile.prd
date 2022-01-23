@@ -1,8 +1,8 @@
-FROM node:16.13.0-slim as node
+FROM node:16.13.2-slim as node
 FROM ruby:3.0.3-slim
 
 # NodeとYarnのインストール
-ENV YARN_VERSION 1.22.5
+ENV YARN_VERSION 1.22.15
 RUN mkdir -p /opt
 
 COPY --from=node /opt/yarn-v$YARN_VERSION /opt/yarn
